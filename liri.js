@@ -27,7 +27,7 @@ var input = "";
 // And do a little for-loop magic to handle the inclusion of "+"s
 for (var i = 3; i < nodeArgs.length; i++) {
 
-  if (i > 2 && i < nodeArgs.length) {
+  if (i > 3 && i < nodeArgs.length) {
 
     input = input + " " + nodeArgs[i];
 
@@ -35,7 +35,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 
   else {
 
-    input = "";
+    input += nodeArgs[i];
 
   }
 }
@@ -125,7 +125,7 @@ function runTwitter(){
 
 function runOMDB(movie){
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
-
+    console.log(movie);
     // Then create a request to the queryUrl
     request(queryUrl, function(error, response, body) {
     if (!error && response.statusCode === 200) {
