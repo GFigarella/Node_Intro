@@ -35,7 +35,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 
   else {
 
-    input += nodeArgs[i];
+    input = "";
 
   }
 }
@@ -50,19 +50,27 @@ function main(command, input){
         case "my-tweets":
             runTwitter();
             break;
+
         case "spotify-this-song":
-            if (input === ""){
+            if (input === undefined){
                 input = "The Sign";
                 runSpotify(input);
             }
             runSpotify(input);
             break;
-        case "movie-this":
 
+        case "movie-this":
+            if (input === ""){
+                input = "Mr.Nobody"
+                runOMDB(input);
+            }
+            // runOMDB(input);
             break;
+
         case "do-what-it-says":
 
             break;
+
         default:
             console.log("Error. Please input: my-tweets, spotify-this-song <songname>, movie-this or do-what-it-says. Yes, dashes included");   
     }
@@ -114,4 +122,27 @@ function runTwitter(){
             }
         }
     });
+}
+
+function runOMDB(movie){
+    var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    // Then create a request to the queryUrl
+    request(queryUrl, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+        //Parse the body of the site and recover just the Release Year
+        //log the info of the movie in this format : 
+        //Title of the movie.
+        //Year the movie came out.
+        //IMDB Rating of the movie.
+        //Rotten Tomatoes Rating of the movie.
+        //Country where the movie was produced.
+        //Language of the movie.
+        //Plot of the movie.
+        //Actors in the movie.
+
+        console.log("-----------------" + "\nTitle: " + JSON.parse(body).Title + ".\nYear of Release: " + JSON.parse(body).Year + ".\nIMDB Rating: " + JSON.parse(body).imdbRating + ".\nRotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value + ".\nCountry/Countries of production: " + JSON.parse(body).Country + ".\nLanguage/Languages of the Movie: " + JSON.parse(body).Language + ".\nPlot: " + JSON.parse(body).Plot + ".\nActors in the Movie: " + JSON.parse(body).Actors + ".\n-----------------");
+        }
+    });
+  
 }
