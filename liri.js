@@ -9,11 +9,11 @@ var Twitter = require('twitter');
 var request = require("request");
 var myTweets = [];
 
-// var spotify = new Spotify(keys.spotify);
-var spotify = new Spotify({
-    id: "ac592809245247009d5f0949d4996b65",
-    secret: "ccc09ff8e52f4412b992d69207c0a7a8"
-  });
+var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify({
+//     id: "ac592809245247009d5f0949d4996b65",
+//     secret: "ccc09ff8e52f4412b992d69207c0a7a8"
+//   });
 var client = new Twitter(keys.twitter);
 
 
@@ -68,18 +68,9 @@ function main(command, input){
 
 runSpotify(input);
 
-// spotify.search({ type: 'track', query: "Give Me A Sign" }, function(err, data) {
-//     if (err) {
-//       return console.log('Error occurred: ' + err);
-//     }
-  
-//     var song = data.tracks.items[0];
-
-//     console.log(song);
-//   });
   
 function runSpotify(song){
-//function that will run the spotify.search command to search for the song requested by the user.
+    //function that will run the spotify.search command to search for the song requested by the user.
 	if(song === ""){
 		song = "The Sign";
 	}
