@@ -14,3 +14,6 @@ The user will input specific commands to run LIRI bot in the command line. Some 
   * do-what-it-says
   
 For movie-this and spotify-this-song, if no song is provided by the user, LIRI will search Mr.Nobody and The Sign by default, respectively.
+
+Project showcase:
+![alt text](./liri1.gif "Logo Title Text 1")
