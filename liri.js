@@ -41,11 +41,14 @@ for (var i = 3; i < nodeArgs.length; i++) {
 }
 
 
+//Run the main function
+main(command, input);
+
 //main function that will run everything based on the user input
 function main(command, input){
     switch(command) {
         case "my-tweets":
-            displayTweets();
+            runTwitter();
             break;
         case "spotify-this-song":
             if (input === ""){
@@ -63,12 +66,8 @@ function main(command, input){
         default:
             console.log("Error. Please input: my-tweets, spotify-this-song <songname>, movie-this or do-what-it-says. Yes, dashes included");   
     }
-}
+};
 
-
-runSpotify(input);
-
-  
 function runSpotify(song){
     //function that will run the spotify.search command to search for the song requested by the user.
 	if(song === ""){
@@ -99,4 +98,20 @@ function runSpotify(song){
 
 	});
 
+};
+
+function runTwitter(){
+    //fucntion that runs the twitter package 
+    var params = {screen_name: 'GaboFigarella', trim_user:true};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+        if (!error) {
+            myTweets = tweets
+            //loop to access the tweets object, and extract the tweet itself and the date of creation.
+            for(var i = 0; i<myTweets.length; i++){
+                var date = myTweets[i].created_at;
+                console.log("@GaboFigarella: " + tweets[i].text + "\nCreated At: " + date.substring(0, 19));
+                console.log("-----------------------");
+            }
+        }
+    });
 }
