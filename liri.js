@@ -68,11 +68,11 @@ function main(command, input){
             break;
 
         case "do-what-it-says":
-
+            doWhatItSays();
             break;
 
         default:
-            console.log("Error. Please input: my-tweets, spotify-this-song <songname>, movie-this or do-what-it-says. Yes, dashes included");   
+            console.log("Error. Please input: my-tweets, spotify-this-song <songname>, movie-this or do-what-it-says. Yes, dashes included.");   
     }
 };
 
@@ -145,4 +145,15 @@ function runOMDB(movie){
         }
     });
   
+}
+
+function doWhatItSays(){
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+            return console.log(error);
+          }
+
+        data = data.split(",");
+        main(data[0],data[1]);
+    });
 }
