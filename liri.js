@@ -52,9 +52,8 @@ function main(command, input){
             break;
 
         case "spotify-this-song":
-            if (input === undefined){
+            if (input === ""){
                 input = "The Sign";
-                runSpotify(input);
             }
             runSpotify(input);
             break;
@@ -62,9 +61,8 @@ function main(command, input){
         case "movie-this":
             if (input === ""){
                 input = "Mr.Nobody"
-                runOMDB(input);
             }
-            // runOMDB(input);
+            runOMDB(input);
             break;
 
         case "do-what-it-says":
@@ -89,6 +87,7 @@ function runSpotify(song){
     }
 
     var song = data.tracks.items[0];
+    console.log(input);
     console.log("------Song Name-----");
     console.log(song.name);
 
