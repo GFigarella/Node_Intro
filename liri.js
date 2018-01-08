@@ -27,7 +27,7 @@ var input = "";
 // And do a little for-loop magic to handle the inclusion of "+"s
 for (var i = 3; i < nodeArgs.length; i++) {
 
-  if (i > 3 && i < nodeArgs.length) {
+  if (i > 2 && i < nodeArgs.length) {
 
     input = input + " " + nodeArgs[i];
 
@@ -76,9 +76,9 @@ function main(command, input){
 
 function runSpotify(song){
     //function that will run the spotify.search command to search for the song requested by the user.
-	if(song === ""){
-		song = "The Sign";
-	}
+	// if(song === ""){
+	// 	song = "The Sign";
+	// }
 
 	spotify.search({ type: 'track', query: song}, function(err, data) {
     if (err) {
