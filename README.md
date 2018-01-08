@@ -1,6 +1,4 @@
-# Node_Intro
-
-# LIRI Homework
+# Node_Intro / LIRI Homework
 
 In this assigment, I will make an interpretation program akin to SIRI, but instead of voice-interpretation, it will be 'language'-interpretation. For this assignment, I will be using the Twitter, Spotify and OMDB APIs.
 
