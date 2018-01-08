@@ -1,0 +1,30 @@
+{
+  "name": "my_packages",
+  "version": "1.0.0",
+  "description": "This package.json will contain all the dependencies needed for this LIRI bot homework. Namely the twitter, spotify and request dependencies.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test-this"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GFigarella/Node_Intro.git"
+  },
+  "keywords": [
+    "LIRI",
+    "Homework",
+    "Node-intro"
+  ],
+  "author": "Gabriel Figarella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GFigarella/Node_Intro/issues"
+  },
+  "homepage": "https://github.com/GFigarella/Node_Intro#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
