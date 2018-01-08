@@ -9,7 +9,11 @@ var Twitter = require('twitter');
 var request = require("request");
 var myTweets = [];
 
-var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify({
+    id: "ac592809245247009d5f0949d4996b65",
+    secret: "ccc09ff8e52f4412b992d69207c0a7a8"
+  });
 var client = new Twitter(keys.twitter);
 
 
@@ -25,7 +29,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 
   if (i > 3 && i < nodeArgs.length) {
 
-    input = input + "+" + nodeArgs[i];
+    input = input + " " + nodeArgs[i];
 
   }
 
@@ -46,6 +50,7 @@ function main(command, input){
         case "spotify-this-song":
             if (input === ""){
                 input = "The Sign";
+                runSpotify(input);
             }
             runSpotify(input);
             break;
@@ -61,10 +66,20 @@ function main(command, input){
 }
 
 
-runSpotify(command);
-function runSpotify(song){
+runSpotify(input);
 
-	//If user has not specified a song , default to "Radioactive" imagine dragons
+// spotify.search({ type: 'track', query: "Give Me A Sign" }, function(err, data) {
+//     if (err) {
+//       return console.log('Error occurred: ' + err);
+//     }
+  
+//     var song = data.tracks.items[0];
+
+//     console.log(song);
+//   });
+  
+function runSpotify(song){
+//function that will run the spotify.search command to search for the song requested by the user.
 	if(song === ""){
 		song = "The Sign";
 	}
@@ -76,13 +91,14 @@ function runSpotify(song){
     }
 
     var song = data.tracks.items[0];
+    console.log("------Song Name-----");
+    console.log(song.name);
+
     console.log("------Artists-----");
+    // loop to display the possible artists that may have a song with that name
     for(i=0; i<song.artists.length; i++){
     	console.log(song.artists[i].name);
     }
-
-    console.log("------Song Name-----");
-    console.log(song.name);
 
 	console.log("-------Preview Link-----");
     console.log(song.preview_url);
